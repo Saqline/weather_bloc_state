@@ -23,7 +23,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Weather App',
+          'Weather App - Open API',
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
@@ -46,7 +46,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
             );
           }
 
-          if (state is! WeatherSuccess) {
+          if (state is !WeatherSuccess) {
             return const Center(
               child: CircularProgressIndicator.adaptive(),
             );
@@ -65,6 +65,16 @@ class _WeatherScreenState extends State<WeatherScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const Center(
+                  child: Text(
+                    'City Name - Dhaka',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 8),
                 // main card
                 SizedBox(
                   width: double.infinity,
@@ -85,7 +95,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           child: Column(
                             children: [
                               Text(
-                                '$currentTemp K',
+                                '${currentTemp.toStringAsFixed(2)} K / ${(currentTemp - 273.15).toStringAsFixed(2)}°C',
                                 style: const TextStyle(
                                   fontSize: 32,
                                   fontWeight: FontWeight.bold,
@@ -112,15 +122,15 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
-                const Text(
-                  'Hourly Forecast',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 8),
+                // const SizedBox(height: 20),
+                // const Text(
+                //   'Hourly Forecast',
+                //   style: TextStyle(
+                //     fontSize: 24,
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                // ),
+                //const SizedBox(height: 8),
                 // SizedBox(
                 //   height: 120,
                 //   child: ListView.builder(
